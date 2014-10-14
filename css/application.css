@@ -1,0 +1,44 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 110px;
+  padding-bottom: 20px;
+  background: url("../images/tablets.jpg") no-repeat center top;
+}
+
+.jumbotron {
+  background-color:rgba(196,184,168,0.8);
+}
+
+.navbar-custom {
+  height: 8em;
+  background-color: #25242E;
+}
+
+.logo {
+  padding-top: 10px;
+  color: #C4B8A8;
+  font-size: 3em;
+}
+
+.item {
+  visibility: hidden;
+}
+
+.priceinfo {
+  margin-top: 2em;
+  height: 30em;
+  position: relative;
+/*  background-color:rgba(196,184,168,0.8);*/
+/*  margin-bottom: 1em;*/
+}
+
+map, div[map] {
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  /*display:block; */
+  /*width: 600px; 
+  height: 400px*/
+}

@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>eBay Search Results</title>
+<style type="text/css">body { font-family: arial,sans-serif;} </style>
+</head>
+<body>
+<h1>eBay Search Results</h1>
+<div id="results"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+function couch(root)
+{
+  var items = root.findItemsByKeywordsResponse[0].searchResult[0].item || [];
+  var html = [];
+  html.push('<table width="100%" border="0" cellspacing="0" cellpadding="3"><tbody>');
+
+  for (var i = 0; i < items.length; ++i)
+  {
+    var item     = items[i];
+    var title    = item.title;
+    var pic      = item.galleryURL;
+    var viewitem = item.viewItemURL;
+
+    if (null != title && null != viewitem)
+    {
+      html.push('<tr><td>' + '<img src="' + pic + '" border="0">' + '</td>' +
+        '<td><a href="' + viewitem + '" target="_blank">' + title + '</a></td></tr>');
+    }
+  }
+  html.push('</tbody></table>');
+  document.getElementById("results").innerHTML = html.join("");
+}
+
+function test() {
+  $.ajax({
+    type: 'GET',
+    dataType: 'jsonp',
+    url: "http://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=TonyLeun-bb0e-45ef-98f1-4de9d00decbc&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&callback=JSON_CALLBACK&REST-Pg hvn AYLOAD&keywords=galaxy&paginationInput.entriesPerPage=20",
+    // success: function(data){
+    //   // console.log("here fucker" + data);
+    // }
+  });
+};
+
+function test2() {
+  $.ajax({
+    // type: 'GET',
+    // data: {},
+    dataType: 'jsonp',
+    url: "http://suggestqueries.google.com/complete/search?client=firefox&q=man",
+    // url: "http://anywhere.ebay.com/services/suggest/?v=jsonp&q=test",
+    // contentType: 'application/javascript',
+    // jsonp: 'callback',
+    // jsonpCallback: 'jsonpCallback',
+    success: function(data){
+      console.log("here fucker: " + data[1][0]);
+    }
+  });
+};
+</script>
+
+<!--
+Use the value of your appid for the appid parameter below.
+-->
+</body>
+</html>​
